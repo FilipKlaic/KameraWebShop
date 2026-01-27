@@ -58,7 +58,7 @@ namespace Webshop.Services
 
                 string choice = Console.ReadLine() ?? "";
                 if (choice == "1") RemoveProduct(groupedCart);
-                else if (choice == "2") Checkout(totalSum); // Vi bygger Checkout i nästa steg!
+                else if (choice == "2") Checkout(totalSum);
                 else if (choice == "0") inCart = false;
             }
         }
@@ -69,7 +69,7 @@ namespace Webshop.Services
             if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= groupedCart.Count)
             {
                 var productIdToRemove = groupedCart[index - 1].Key;
-                // Vi tar bort EN av produkterna från den globala listan
+                // Vi tar bort en av produkterna från den globala listan
                 var itemToRemove = _cart.First(p => p.Id == productIdToRemove);
                 _cart.Remove(itemToRemove);
 

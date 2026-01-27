@@ -15,7 +15,6 @@ namespace Webshop
             using var context = new MyStoreContext();
             var cart = new List<Product>();
 
-            // Initiera tjänsterna
             var storeService = new StoreService(context, cart);
             var cartService = new CartService(cart, context); 
             var adminService = new AdminService(context); 

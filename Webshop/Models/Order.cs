@@ -30,6 +30,6 @@ namespace Webshop.Models
         public Order? Order { get; set; }
 
         public int Quantity { get; set; }
-        public decimal PriceAtPurchase { get; set; } // Bra att spara om priset ändras i framtiden
+        public decimal PriceAtPurchase { get; set; } 
     }
 }

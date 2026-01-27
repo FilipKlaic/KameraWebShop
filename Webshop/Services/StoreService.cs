@@ -43,7 +43,6 @@ namespace Webshop.Services
         }
         private void ListCategories()
         {
-            // Vi hämtar kategorier direkt från DB så att "Tillbehör" syns
             var categories = _context.Categories.ToList();
 
             Console.Clear();
@@ -65,7 +64,7 @@ namespace Webshop.Services
         private void SearchProducts()
         {
             Console.Clear();
-            Console.Write("Ange sökord (Fritextsök): "); // Krav: Fritextsöka
+            Console.Write("Ange sökord (Fritextsök): "); 
             string search = Console.ReadLine() ?? "";
 
             var results = _context.Products

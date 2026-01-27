@@ -18,8 +18,8 @@ namespace Webshop.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Din specifika connection string, men med databasnamnet "CameraShopDB" (eller "WebshopDB")
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=KameraWebShop;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            // Din nya Azure-sträng
+            optionsBuilder.UseSqlServer("Server=tcp:filip-webshop-server.database.windows.net,1433;Initial Catalog=WebshopDb;Persist Security Info=False;User ID=dbadmin;Password=T1tanFall2!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

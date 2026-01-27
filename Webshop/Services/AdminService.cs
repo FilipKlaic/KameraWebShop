@@ -94,18 +94,18 @@ namespace Webshop.Services
                     Price = price,
                     StockQuantity = stock,
                     CategoryId = categories[catIndex].Id,
-                    IsFeatured = false // Kan ändras manuellt i DB eller byggas ut här
+                    IsFeatured = false 
                 };
 
                 _context.Products.Add(newProduct);
-                _context.SaveChanges(); // Sparar till SQL-databasen
+                _context.SaveChanges(); 
 
                 Console.WriteLine("\nProdukten har sparats! Tryck på valfri tangent...");
                 Console.ReadKey();
             }
             else if (choice == "2")
             {
-                UpdateStock(); // Vi kan bygga denna i nästa del av steget om du vill
+                UpdateStock(); 
             }
         }
 
@@ -204,7 +204,6 @@ namespace Webshop.Services
             Console.Clear();
             Console.WriteLine("--- KUNDLISTA & ORDERHISTORIK ---");
 
-            // Vi inkluderar både Ordrar och OrderRows (orderrader) för att se detaljer
             var customers = _context.Customers
                 .Include(c => c.Orders)
                 .ThenInclude(o => o.OrderRows)
