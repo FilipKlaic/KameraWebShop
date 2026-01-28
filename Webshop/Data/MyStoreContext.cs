@@ -18,8 +18,16 @@ namespace Webshop.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Din nya Azure-sträng
-            optionsBuilder.UseSqlServer("Server=tcp:filip-webshop-server.database.windows.net,1433;Initial Catalog=WebshopDb;Persist Security Info=False;User ID=dbadmin;Password=T1tanFall2!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            if (!optionsBuilder.IsConfigured)
+            {
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+    
+                var connectionString = configuration.GetConnectionString("MyDbConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
